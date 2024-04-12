@@ -1,0 +1,27 @@
+@import '../../styles/breakpoints';
+
+.photo-error-icon {
+  width: 100px;
+  height: 100px;
+  background: url('../../assets/svg/gallery/img-error.svg') no-repeat center;
+  background-size: contain;
+}
+
+@include core-media-breakpoint-only(sm) {
+  .button-wrapper {
+    position: fixed;
+    bottom: 24px;
+    width: calc(100% - 48px);
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .content-wrapper {
+    height: calc(100% - 76px);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+}

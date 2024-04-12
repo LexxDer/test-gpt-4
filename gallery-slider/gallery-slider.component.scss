@@ -1,0 +1,74 @@
+.file-container {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  background: #f5f7fa;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  & + .file-container {
+    margin-left: 16px;
+  }
+}
+
+.slider {
+  position: relative;
+
+  .slider-container {
+    display: flex;
+    overflow: auto;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.slider-nav-button {
+  width: 53px;
+  height: 100%;
+  background: linear-gradient(90deg, #ffffff 92.45%, rgba(255, 255, 255, 0) 100%);
+  border: 0;
+  cursor: pointer;
+  align-self: center;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: #bbc0c6 url('../../assets/svg/arrow-right-white.svg') no-repeat center;
+    border-radius: 32px;
+    margin: 0 auto;
+  }
+
+  &.previous-button {
+    &:before {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next-button {
+    right: 0;
+    background: linear-gradient(270deg, #ffffff 92.45%, rgba(255, 255, 255, 0) 100%);
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../styles/breakpoints';
+
+.file-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  min-width: 128px;
+  height: 128px;
+  min-height: 128px;
+  background: #f5f7fa;
+  border: 2px solid $tagline;
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $tagline;
+    border-radius: 50%;
+  }
+
+  &.selected {
+    &:before {
+      background: $gosblue url('../../assets/svg/gallery/selected.svg') no-repeat center;
+      border-color: $gosblue;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+@include core-media-breakpoint-up(md) {
+  .file-preview {
+    width: 195px;
+    min-width: 195px;
+    height: 195px;
+    min-height: 195px;
+  }
+}

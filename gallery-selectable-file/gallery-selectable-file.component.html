@@ -1,0 +1,8 @@
+<ng-container *ngIf="file">
+  <div class="file-preview" [class.selected]="isSelected" (click)="onChangeSelect()">
+    <img *ngIf="previewSrc as src; else fileType" [src]="src" [alt]="file.fileName" />
+    <ng-template #fileType>
+      <core-file-extension-icon [fileExt]="file.fileExt" [mimeType]="file.mimeType"></core-file-extension-icon>
+    </ng-template>
+  </div>
+</ng-container>

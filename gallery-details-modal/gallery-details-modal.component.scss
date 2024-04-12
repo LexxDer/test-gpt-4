@@ -1,0 +1,8 @@
+::ng-deep {
+  #galleryDetails {
+    &.core-dialog-container,
+    .core-dialog-content {
+      max-height: unset;
+    }
+  }
+}

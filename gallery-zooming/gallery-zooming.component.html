@@ -1,0 +1,8 @@
+<div class="zoom" [ngClass]="{ 'cursor-grab': isZoomable && !brokenImage, broken: brokenImage }" #imageContainer>
+  <img
+    #imageElement
+    [src]="imageSrc"
+    (error)="handleImgError($event)"
+    (load)="imageLoaded()"
+    [ngClass]="{ 'core-hide': imageLoading }" />
+</div>

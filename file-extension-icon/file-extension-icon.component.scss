@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+
+.file-icon-container {
+  position: relative;
+  width: 46px;
+  height: 24px;
+}
+
+.file-icon-text {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 23px;
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+}
+
+.XLS,
+.XLSX,
+.CSV {
+  path {
+    fill: $pino-verde;
+  }
+}
+
+.PDF {
+  path {
+    fill: $foglia-di-acero;
+  }
+}
+
+.PNG,
+.JPG,
+.JPEG {
+  path {
+    fill: $green-sea;
+  }
+}
+
+.BMP,
+.TIF,
+.TIFF,
+.GIF {
+  path {
+    fill: $pulsante-premuto;
+  }
+}
+
+.KEY,
+.PPT,
+.PPTX {
+  path {
+    fill: #851f82;
+  }
+}
+
+.RAR,
+.ZIP {
+  path {
+    fill: $blu-selvaggio;
+  }
+}
+
+.DOC,
+.DOCX,
+.TXT,
+.RTF {
+  path {
+    fill: $gosblue;
+  }
+}
+
+.FLV,
+.MOV,
+.MPG,
+.WAV,
+.MP3,
+.MP4 {
+  path {
+    fill: $active-item;
+  }
+}
+
+.SIG,
+.XML {
+  path {
+    fill: $telegrey-scuro;
+  }
+}
+
+.x_x {
+  .file-icon-text {
+    right: 8px;
+  }
+  path {
+    fill: $gosred;
+  }
+}

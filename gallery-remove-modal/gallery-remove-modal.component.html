@@ -1,0 +1,55 @@
+<div class="core-dialog-title section-state-modal">
+  <h3 *ngIf="data.title" class="core-title-h3">{{ data.title }}</h3>
+  <div class="core-dialog-close" (click)="close()"></div>
+</div>
+
+<core-divider class="core-mb-24 color-blue"></core-divider>
+
+<div class="core-dialog-content">
+  <div>
+    <div class="core-plain-text core-mb-8">Выберите фото, которые нужно удалить</div>
+    <div class="core-plain-small">
+      <span class="core-grey">Осталось свободной памяти: </span>
+      <span>{{ data.currentFilesSize | coreFileSize: 1 : false }}/{{ data.maxFilesSize | coreFileSize }}</span>
+    </div>
+  </div>
+
+  <div class="file-container core-mt-24">
+    <div class="file-group-container" *ngFor="let groupKey of groupKeys">
+      <div class="file-wrapper">
+        <div *ngFor="let file of groupedFiles.get(groupKey); trackBy: trackByMnemonic">
+          <core-gallery-selectable-file
+            [file]="file"
+            [isSelected]="!!file.selected"
+            (changeSelect)="changeSelect(file)"></core-gallery-selectable-file>
+          <div class="file-properties core-plain-small core-mt-4">
+            <p>{{ file.created | date: 'dd.MM.YY' }}</p>
+            <p>{{ file.fileSize | coreFileSize }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="core-flex-container-md core-justify-between core-mt-24 buttons-container">
+    <div>
+      <button
+        class="link-button core-plain-link core-mr-20"
+        (click)="deleteSelectedFiles()"
+        [disabled]="!selectedFiles.length">
+        Удалить
+        <span *ngIf="selectedFiles.length"
+          >{{ selectedFiles.length }} фото ({{ selectedFilesSize | coreFileSize }})</span
+        >
+      </button>
+      <button class="link-button core-plain-link core-sm-mt-12" (click)="deleteAllFiles()">
+        Удалить всё ({{ data.currentFilesSize | coreFileSize }})
+      </button>
+    </div>
+    <div>
+      <button class="link-button core-plain-link core-sm-mt-12" *ngIf="selectedFiles.length" (click)="cancelSelect()">
+        Отменить выбор
+      </button>
+    </div>
+  </div>
+</div>

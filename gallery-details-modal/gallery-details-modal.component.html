@@ -1,0 +1,14 @@
+<div class="core-dialog-title section-state-modal">
+  <h3 *ngIf="data?.title" class="core-title-h3">{{ data.title }}</h3>
+  <div class="core-dialog-close" (click)="close()"></div>
+</div>
+
+<core-divider class="core-mb-24 color-blue"></core-divider>
+
+<div class="core-dialog-content">
+  <core-gallery-details
+    [files$]="data.files$"
+    [currentFileIndex]="data.index"
+    [deleteFile]="data.delete"
+    (allFilesDeleted)="close()"></core-gallery-details>
+</div>

@@ -1,0 +1,25 @@
+@import '../styles/variables';
+@import '../styles/breakpoints';
+
+button.link-button {
+  border: none;
+  background: none;
+  padding: 0 !important;
+
+  &:hover,
+  &:focus {
+    border: none;
+    background: none;
+  }
+  &:disabled {
+    background: none;
+    color: $divider;
+    cursor: default;
+  }
+}
+
+@include core-media-breakpoint-only(sm) {
+  .core-mt-sm-16 {
+    margin-top: 16px;
+  }
+}

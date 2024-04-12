@@ -1,0 +1,139 @@
+@import '../../styles/variables';
+@import '../../styles/breakpoints';
+
+.image-container {
+  height: 360px;
+  border: 2px solid $ciottoli;
+  background-color: #f5f7fa;
+  overflow: hidden;
+  position: relative;
+}
+
+core-file-extension-icon {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 420px;
+}
+
+@include core-media-breakpoint-only(sm) {
+  .image-container {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .core-ml-sm-12 {
+    margin-left: 12px;
+  }
+
+  .file-name {
+    max-width: calc(100vw - 190px);
+  }
+}
+
+.file-info-grey {
+  color: $telegrey-scuro;
+}
+
+.tool-panel {
+  padding: 12px 16px;
+  background-color: $summer-night;
+  border-radius: 0 0 8px 8px;
+
+  .tool-button {
+    border: 0;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0 0 0 24px;
+    height: 24px;
+
+    &:before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.zoom-in {
+      &:before {
+        background: url('../../assets/svg/gallery/zoom-white.svg') no-repeat center;
+      }
+    }
+    &.zoom-out {
+      &:before {
+        background: url('../../assets/svg/gallery/zoom-out-white.svg') no-repeat center;
+      }
+    }
+    &.look {
+      &:before {
+        background: url('../../assets/svg/gallery/look-white.svg') no-repeat center;
+      }
+    }
+    &.delete {
+      &:before {
+        background: url('../../assets/svg/gallery/delete-white.svg') no-repeat center;
+      }
+    }
+    &.download {
+      &:before {
+        background: url('../../assets/svg/gallery/download-white.svg') no-repeat center;
+      }
+    }
+  }
+
+  .tool-button-text,
+  .files-counter {
+    color: $white;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@include core-media-breakpoint-only(sm) {
+  .tool-panel {
+    .tool-button-text {
+      font-size: 0;
+      line-height: 0;
+    }
+  }
+}
+
+.nav-button {
+  width: 32px;
+  height: 32px;
+  background: rgba(11, 31, 51, 0.28) url('../../assets/svg/arrow-right-white.svg') no-repeat center;
+  border-radius: 32px;
+  margin: 0 auto;
+  cursor: pointer;
+  position: absolute;
+  outline: none;
+  border: none;
+  top: calc(50% - 16px);
+  z-index: 2;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.previous {
+    transform: rotate(180deg);
+    left: 16px;
+  }
+
+  &.next {
+    right: 16px;
+  }
+}

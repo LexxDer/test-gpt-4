@@ -1,0 +1,14 @@
+<div class="slider">
+  <button class="slider-nav-button previous-button" *ngIf="showPreviousButton" (click)="moveLeft()"></button>
+  <div #slides class="slider-container">
+    <div *ngFor="let file of files; let index = index" (click)="onPreviewClick(index)" class="file-container">
+      <ng-container *ngIf="getPreviewSrc(file) as src; else fileType">
+        <img class="preview-image" [src]="src" loading="lazy" [alt]="file?.mnemonic" (error)="handleImgError($event)" />
+      </ng-container>
+      <ng-template #fileType>
+        <core-file-extension-icon [fileExt]="file.fileExt" [mimeType]="file.mimeType"></core-file-extension-icon>
+      </ng-template>
+    </div>
+  </div>
+  <button *ngIf="showNextButton" class="slider-nav-button next-button" (click)="moveRight()"></button>
+</div>

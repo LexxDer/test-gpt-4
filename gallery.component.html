@@ -1,0 +1,31 @@
+<ng-container *ngIf="files$ | async as files">
+  <ng-container *ngIf="files.length">
+    <core-gallery-slider [files]="files" (previewClick)="showDetailsModal($event)"></core-gallery-slider>
+
+    <div class="core-mt-16">
+      <ng-container *ngIf="!downloading; else downloadingProgress">
+        <div class="core-flex-container-md">
+          <button class="link-button core-plain-link core-mr-24 core-block" (click)="onDownloadArchive()">
+            Скачать всё ({{ totalFilesSize | coreFileSize }})
+          </button>
+          <button class="link-button core-plain-link core-block core-mt-sm-16" (click)="onDeleteAllFiles()">
+            Удалить всё
+          </button>
+        </div>
+      </ng-container>
+      <ng-template #downloadingProgress>
+        <div class="core-flex-container-md">
+          <div class="core-plain-text core-grey core-mr-12" *ngIf="downloading" (click)="onDownloadArchive()">
+            Подготовка к скачиванию...
+          </div>
+          <button
+            class="link-button core-plain-link core-block core-mt-sm-16"
+            *ngIf="downloading"
+            (click)="cancelDownloadArchive()">
+            Отменить
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </ng-container>
+</ng-container>

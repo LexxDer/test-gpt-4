@@ -1,0 +1,81 @@
+@import '../../styles/variables';
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+
+::ng-deep {
+  #selectAndRemove.core-dialog-container {
+    width: 692px;
+    max-height: unset;
+  }
+}
+
+.file-group-container {
+  & + .file-group-container {
+    margin-top: 12px;
+  }
+
+  .file-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+.file-container {
+  max-height: 39vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-right: -12px;
+  padding-right: 6px;
+
+  @include thin-scrollbar;
+}
+
+.file-properties {
+  display: flex;
+  justify-content: space-between;
+  color: $telegrey-scuro;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 0 8px;
+}
+
+@include core-media-breakpoint-up(md) {
+  .file-group-container {
+    & + .file-group-container {
+      margin-top: 24px;
+    }
+
+    .file-wrapper {
+      gap: 24px;
+    }
+  }
+
+  .file-properties {
+    padding: 0 20px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+@include core-media-breakpoint-only(sm) {
+  .buttons-container {
+    button {
+      display: block;
+    }
+  }
+
+  .core-sm-mt-12 {
+    margin-top: 12px;
+  }
+
+  .core-dialog-content {
+    display: flex;
+    flex-flow: column;
+    max-height: calc(100vh - 132px);
+  }
+
+  .file-container {
+    max-height: unset;
+  }
+}

@@ -1,0 +1,57 @@
+<ng-container *ngIf="currentFile">
+  <div class="core-mb-12 core-flex-container core-justify-between">
+    <div class="core-flex-container">
+      <div class="core-plain-text file-info-grey">
+        {{ currentFile.created | date: 'dd.MM.YY' }}
+      </div>
+      <div class="core-plain-text core-ml-32 core-ml-sm-12 file-name">
+        {{ currentFile.fileName }}
+      </div>
+    </div>
+    <div class="core-plain-text file-info-grey">
+      {{ fileSize }}
+    </div>
+  </div>
+
+  <div class="image-container">
+    <button class="nav-button previous" *ngIf="showPrevButton" (click)="changeFile(-1)"></button>
+    <ng-container *ngIf="fileSrc as src; else fileType">
+      <core-gallery-zooming
+        [imageSrc]="src"
+        [zoom$]="zoom$"
+        [isZoomable]="!isPdf"
+        (zoomChanged)="zoomChanged($event)"></core-gallery-zooming>
+    </ng-container>
+    <ng-template #fileType>
+      <core-file-extension-icon
+        [fileExt]="currentFile.fileExt"
+        [mimeType]="currentFile.mimeType"></core-file-extension-icon>
+    </ng-template>
+    <button class="nav-button next" *ngIf="showNextButton" (click)="changeFile(1)"></button>
+  </div>
+
+  <div class="tool-panel core-flex-container core-justify-between core-plain-small">
+    <div class="core-flex-container">
+      <button *ngIf="isPdf" class="tool-button look core-mr-32" (click)="openPdf(currentFile)">
+        <span class="tool-button-text core-ml-4">Посмотреть</span>
+      </button>
+      <button
+        *ngIf="!isPdf && !isTouchDevice"
+        class="tool-button core-mr-32 core-hide core-show-md"
+        [ngClass]="[isMinZoom ? 'zoom-in' : 'zoom-out']"
+        (click)="changeZoom()">
+        <span class="tool-button-text core-ml-4">{{ isMinZoom ? 'Приблизить' : 'Отдалить' }}</span>
+      </button>
+
+      <button (click)="downloadFile(currentFile)" class="tool-button download">
+        <span class="tool-button-text core-ml-4">Скачать</span>
+      </button>
+    </div>
+    <div class="core-flex-container core-align-items-center">
+      <button class="tool-button delete" (click)="delete()">
+        <span class="tool-button-text core-ml-4">Удалить</span>
+      </button>
+      <div class="files-counter core-ml-32">{{ currentFileIndex + 1 }}/{{ filesCount }}</div>
+    </div>
+  </div>
+</ng-container>
